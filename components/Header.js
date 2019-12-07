@@ -220,7 +220,7 @@ class Header extends React.Component {
           rightStyle={{ alignItems: 'center' }}
           left={
             <Icon
-              name={back ? 'minimal-left2x' : 'align-left-22x'}
+              name={back ? 'arrow-back' : 'menu'}
               family="NowExtra"
               size={16}
               onPress={this.handleLeftPress}

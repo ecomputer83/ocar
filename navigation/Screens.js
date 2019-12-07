@@ -185,35 +185,99 @@ const AppStack = createDrawerNavigator(
         drawerLabel: ({ focused }) => <DrawerItem focused={focused} title="Home" />
       })
     },
-    Components: {
+    MyVehicles: {
+      screen: HomeStack,
+      navigationOptions: navOpt => ({
+        drawerLabel: ({ focused }) => <DrawerItem title="My Vehicles" />
+      })
+    },
+    MyAppointments: {
+      screen: HomeStack,
+      navigationOptions: navOpt => ({
+        drawerLabel: ({ focused }) => <DrawerItem title="My Appointments" />
+      })
+    },
+    MyServiceStatus: {
+      screen: HomeStack,
+      navigationOptions: navOpt => ({
+        drawerLabel: ({ focused }) => <DrawerItem title="My Service Status" />
+      })
+    },
+    GetEstimate: {
+      screen: HomeStack,
+      navigationOptions: navOpt => ({
+        drawerLabel: ({ focused }) => <DrawerItem title="Get Estimate" />
+      })
+    },
+    VehicleShowroom: {
       screen: ComponentsStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
-          <DrawerItem focused={focused} screen="Components" title="Components" />
+          <DrawerItem focused={focused} screen="Components" title="Vehicle Showroom" />
         )
       })
     },
-    Articles: {
+    PartsEnquiry: {
+      screen: ComponentsStack,
+      navigationOptions: navOpt => ({
+        drawerLabel: ({ focused }) => (
+          <DrawerItem focused={focused} screen="Components" title="Parts Enquiry" />
+        )
+      })
+    },
+    DiagnosticExperts: {
+      screen: ComponentsStack,
+      navigationOptions: navOpt => ({
+        drawerLabel: ({ focused }) => (
+          <DrawerItem focused={focused} screen="Components" title="Diagnostic Experts" />
+        )
+      })
+    },
+    TowService: {
       screen: ArticlesStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
-          <DrawerItem focused={focused} screen="Articles" title="Articles" />
+          <DrawerItem focused={focused} screen="Articles" title="Tow Service" />
         )
       })
     },
-    Profile: {
+    LatestPromos: {
       screen: ProfileStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
-          <DrawerItem focused={focused} screen="Profile" title="Profile" />
+          <DrawerItem focused={focused} screen="Profile" title="Latest Promos" />
         )
       })
     },
-    Account: {
+    SafetyTips: {
       screen: AccountStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
-          <DrawerItem focused={focused} screen="Register" title="Account" />
+          <DrawerItem focused={focused} screen="Register" title="Safety Tips" />
+        )
+      })
+    },
+    Notifications: {
+      screen: AccountStack,
+      navigationOptions: navOpt => ({
+        drawerLabel: ({ focused }) => (
+          <DrawerItem focused={focused} screen="Register" title="Notifications" />
+        )
+      })
+    },
+    ServiceCenters: {
+      screen: AccountStack,
+      navigationOptions: navOpt => ({
+        drawerLabel: ({ focused }) => (
+          <DrawerItem focused={focused} screen="Register" title="Service Centers" />
+        )
+      })
+    },
+    AccreditedDealers: {
+      screen: AccountStack,
+      navigationOptions: navOpt => ({
+        drawerLabel: ({ focused }) => (
+          <DrawerItem focused={focused} screen="Register" title="Accredited Dealers" />
         )
       })
     }

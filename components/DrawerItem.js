@@ -10,46 +10,42 @@ class DrawerItem extends React.Component {
     const { title, focused } = this.props;
 
     switch (title) {
-      case 'Home':
+      case 'My Vehicles':
         return (
           <Icon
             name="apps"
             family="NowExtra"
             size={18}
             color={focused ? nowTheme.COLORS.PRIMARY : 'white'}
-            style={{ opacity: 0.5 }}
             />
         );
-      case 'Components':
+      case 'My Appointments':
         return (
           <Icon
             name="book"
             family="NowExtra"
             size={18} color={focused ? nowTheme.COLORS.PRIMARY : 'white'}
-            style={{ opacity: 0.5 }}
             />
         );
-      case 'Articles':
+      case 'My Service Status':
         return (
           <Icon
             name="attach-file"
             family="NowExtra"
             size={18}
             color={focused ? nowTheme.COLORS.PRIMARY : 'white'}
-            style={{ opacity: 0.5 }}
             />
         );
-      case 'Profile':
+      case 'Get Estimate':
         return (
           <Icon
             name="person"
             family="NowExtra"
             size={18}
             color={focused ? nowTheme.COLORS.PRIMARY : 'white'}
-            style={{ opacity: 0.5 }}
             />
         );
-      case 'Account':
+      case 'Vehicle Showroom':
         return (
           <Icon
             name="acount-balance"
@@ -59,7 +55,7 @@ class DrawerItem extends React.Component {
             style={{ opacity: 0.5 }}
             />
         );
-      case 'Examples':
+      case 'Parts Enquiry':
         return (
           <Icon
             name="album"
@@ -68,23 +64,93 @@ class DrawerItem extends React.Component {
             color={focused ? nowTheme.COLORS.PRIMARY : 'white'}
           />
         );
-      case 'GETTING STARTED':
+
+      case 'Diagnostic Experts':
+          return (
+            <Icon
+              name="album"
+              family="NowExtra"
+              size={14}
+              color={focused ? nowTheme.COLORS.PRIMARY : 'white'}
+            />
+          );
+
+      case 'Tow Service':
+        return (
+          <Icon
+            name="album"
+            family="NowExtra"
+            size={14}
+            color={focused ? nowTheme.COLORS.PRIMARY : 'white'}
+          />
+        );
+
+      case 'Latest Promos':
+        return (
+          <Icon
+            name="album"
+            family="NowExtra"
+            size={14}
+            color={focused ? nowTheme.COLORS.PRIMARY : 'white'}
+          />
+        );
+      case 'Safety Tips':
         return (
           <Icon
             name="mouse"
             family="NowExtra"
             size={18}
-            style={{ borderColor: 'rgba(0,0,0,0.5)', opacity: 0.5 }}
+            style={{ borderColor: 'rgba(0,0,0,0.5)' }}
             color={focused ? nowTheme.COLORS.PRIMARY : 'white'}
           />
         );
-      case 'LOGOUT':
+        case 'Notifications':
+          return (
+            <Icon
+              name="mouse"
+              family="NowExtra"
+              size={18}
+              style={{ borderColor: 'rgba(0,0,0,0.5)' }}
+              color={focused ? nowTheme.COLORS.PRIMARY : 'white'}
+            />
+          );
+          case 'Service Centers':
+        return (
+          <Icon
+            name="mouse"
+            family="NowExtra"
+            size={18}
+            style={{ borderColor: 'rgba(0,0,0,0.5)' }}
+            color={focused ? nowTheme.COLORS.PRIMARY : 'white'}
+          />
+        );
+        case 'Accredited Dealers':
+        return (
+          <Icon
+            name="mouse"
+            family="NowExtra"
+            size={18}
+            style={{ borderColor: 'rgba(0,0,0,0.5)' }}
+            color={focused ? nowTheme.COLORS.PRIMARY : 'white'}
+          />
+        );
+        case 'Chat with an Agent':
+        return (
+          <Icon
+            name="mouse"
+            family="NowExtra"
+            size={18}
+            style={{ borderColor: 'rgba(0,0,0,0.5)' }}
+            color={focused ? nowTheme.COLORS.PRIMARY : 'white'}
+          />
+        );
+      case 'Sign In/Sign Out':
         return (
           <Icon
             name="lock-open"
             family="NowExtra"
             size={18}
-            style={{ borderColor: 'rgba(0,0,0,0.5)', opacity: 0.5 }}
+            style={{ borderColor: 'rgba(0,0,0,0.5)' }}
             color={focused ? nowTheme.COLORS.PRIMARY : 'white'}
           />
         );
@@ -123,13 +189,12 @@ class DrawerItem extends React.Component {
 
 const styles = StyleSheet.create({
   defaultStyle: {
-    paddingVertical: 15,
+    paddingVertical: 10,
     paddingHorizontal: 14,
     color: 'white'
   },
   activeStyle: {
     backgroundColor: nowTheme.COLORS.WHITE,
-    borderRadius: 30,
     color: 'white'
   },
   shadow: {

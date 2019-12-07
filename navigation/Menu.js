@@ -1,7 +1,7 @@
 import React from 'react';
 import { DrawerNavigatorItems } from 'react-navigation-drawer';
 import { ScrollView, StyleSheet, Dimensions, Image, TouchableOpacity, Linking } from 'react-native';
-import { Block, Text, theme } from 'galio-framework';
+import { Block, Text, theme, Slider } from 'galio-framework';
 import Icon from '../components/Icon';
 import Images from '../constants/Images';
 import { DrawerItem } from '../components/index';
@@ -15,33 +15,23 @@ const Drawer = props => (
     <Block style={styles.header}>
       <Image style={styles.logo} source={Images.Logo} />
       <Block right style={styles.headerIcon}>
-        <Icon name="align-left-22x" family="NowExtra" size={15} color={'white'} />
+        <Icon name="arrow-back" family="NowExtra" size={15} color={'white'} />
       </Block>
     </Block>
 
     <Block flex>
       <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
         <DrawerNavigatorItems {...props} />
-        <Block flex style={{ marginTop: 24, marginVertical: 8, paddingHorizontal: 8 }}>
-          <Block
-            style={{ borderColor: 'white', width: '93%', borderWidth: StyleSheet.hairlineWidth, marginHorizontal: 10}}
-          />
-          <Text
-            color={nowTheme.COLORS.WHITE}
-            style={{ marginTop: 30, marginLeft: 20, marginBottom: 10, fontFamily: 'montserrat-regular', fontWeight: '300', fontSize: 12}}
-          >
-            DOCUMENTATION
-          </Text>
-        </Block>
+
         <TouchableOpacity onPress={() => props.navigation.navigate('Onboarding')}
           style={{ marginLeft: 10, fontFamily: 'montserrat-regular' }}
         >
-          <DrawerItem {...props} title="GETTING STARTED" />
+          <DrawerItem {...props} title="Chat with an Agent" />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => props.navigation.navigate('Onboarding')}
           style={{ marginLeft: 10, fontFamily: 'montserrat-regular' }}
         >
-          <DrawerItem {...props} title="LOGOUT" />
+          <DrawerItem {...props} title="Sign In/Sign Out" />
         </TouchableOpacity>
       </ScrollView>
     </Block>
@@ -50,7 +40,7 @@ const Drawer = props => (
 
 const Menu = {
   contentComponent: props => <Drawer {...props} />,
-  drawerBackgroundColor: nowTheme.COLORS.PRIMARY,
+  drawerBackgroundColor: nowTheme.COLORS.DEFAULT,
   drawerWidth: width * 0.8,
   contentOptions: {
     activeTintColor: nowTheme.COLORS.WHITE,
@@ -83,7 +73,7 @@ const styles = StyleSheet.create({
   header: {
     paddingHorizontal: 28,
     paddingBottom: theme.SIZES.BASE,
-    paddingTop: theme.SIZES.BASE * 3,
+    paddingTop: theme.SIZES.BASE,
     justifyContent: 'center'
   },
   headerIcon: {
@@ -91,7 +81,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     height: 40,
-    width: 37
+    width: 45
   }
 });
 

@@ -14,71 +14,79 @@ export default class Onboarding extends React.Component {
       <Block flex style={styles.container}>
         <StatusBar barStyle="light-content" />
         <Block flex>
-          <ImageBackground
+        <ImageBackground
             source={Images.Onboarding}
             style={{ flex: 1, height: height, width, zIndex: 1 }}
           />
           <Block space="between" style={styles.padded}>
             <Block>
               <Block middle>
-                <Image source={Images.NowLogo} style={{ width: 115, height: 124, bottom: 200, position: 'absolute' }} />
+                <Image source={Images.Logo} style={{ width: 138, height: 124, bottom: 100, position: 'absolute' }} />
               </Block>
               <Block>
                 <Block middle>
                   <Text
                     style={{
-                      fontFamily: 'montserrat-regular', bottom: 50, position: 'absolute', letterSpacing: 2, paddingHorizontal: 20, textAlign: 'center'
+                      fontFamily: 'montserrat-regular', letterSpacing: 1, paddingHorizontal: 10, textAlign: 'center'
                     }}
                     color="white"
-                    size={44}
+                    size={24}
                   >
-                    Now UI
-                    React Native
+                    Welcome to Toyota (Nig.) Limited
+                    End User Mobile App.
                   </Text>
                 </Block>
               </Block>
-              <Block middle row>
+              <Block middle style={{
+                  marginTop: theme.SIZES.BASE * 1.5,
+                }}>
                 <Text
                   color="white"
                   size={16}
                   style={{ fontFamily: 'montserrat-regular' }}
                 >
-                  Designed by
+                  To enjoy the full features available on this app, you are required to register
                 </Text>
-                <Image
-                  source={Images.InvisionLogo}
-                  style={{
-                    height: 28,
-                    width: 91,
-                    marginLeft: theme.SIZES.BASE
-                  }}
-                />
+                
               </Block>
-              <Block middle row style={{ marginTop: 15, marginBottom: 30}}>
-                <Text
-                  color="white"
-                  size={16}
-                  style={{ fontFamily: 'montserrat-regular' }}
-                >
-                  Coded by
-                </Text>
-                <Image
-                  source={Images.CreativeTimLogo}
-                  style={{
-                    height: 29,
-                    width: 129,
-                    marginLeft: theme.SIZES.BASE
-                  }}
-                />
-              </Block>
+              
 
               <Block
-                row
+              
                 style={{
-                  marginTop: theme.SIZES.BASE * 2.5,
+                  marginTop: theme.SIZES.BASE * 3.5,
                   marginBottom: theme.SIZES.BASE * 2
                 }}
               >
+                <Block row>
+                <Button
+                  shadowless
+                  style={styles.loginbutton}
+                  color={nowTheme.COLORS.PRIMARY}
+                  onPress={() => navigation.navigate('Home')}
+                >
+                  <Text
+                    style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}
+                    color={theme.COLORS.WHITE}
+                  >
+                    Login
+                  </Text>
+                </Button>
+                <Button
+                  shadowless
+                  style={styles.registerbutton}
+                  color={nowTheme.COLORS.PRIMARY}
+                  onPress={() => navigation.navigate('Home')}
+                >
+                  <Text
+                    style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}
+                    color={theme.COLORS.WHITE}
+                  >
+                    Create Account
+                  </Text>
+                </Button>
+                </Block>
+                <Block>
                 <Button
                   shadowless
                   style={styles.button}
@@ -89,9 +97,10 @@ export default class Onboarding extends React.Component {
                     style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}
                     color={theme.COLORS.WHITE}
                   >
-                    GET STARTED
+                    No Thanks, Maybe later
                   </Text>
                 </Button>
+                </Block>
               </Block>
             </Block>
           </Block>
@@ -104,10 +113,10 @@ export default class Onboarding extends React.Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.COLORS.BLACK,
-    marginTop: Platform.OS === 'android' ? -HeaderHeight : 0
+    marginTop: Platform.OS === 'android' ? 0 : 0
   },
   padded: {
-    paddingHorizontal: theme.SIZES.BASE * 2,
+    paddingHorizontal: theme.SIZES.BASE * 1.5,
     zIndex: 3,
     position: 'absolute',
     bottom: Platform.OS === 'android' ? theme.SIZES.BASE * 2 : theme.SIZES.BASE * 3
@@ -116,7 +125,23 @@ const styles = StyleSheet.create({
     width: width - theme.SIZES.BASE * 4,
     height: theme.SIZES.BASE * 3,
     shadowRadius: 0,
-    shadowOpacity: 0
+    shadowOpacity: 0,
+    marginTop: 5
+  },
+
+  loginbutton: {
+    width: (width /2) - (theme.SIZES.BASE * 2 + 2.5),
+    height: theme.SIZES.BASE * 3,
+    shadowRadius: 0,
+    shadowOpacity: 0,
+    marginRight: 5
+  },
+
+  registerbutton: {
+    width: (width /2) - (theme.SIZES.BASE * 2 + 2.5),
+    height: theme.SIZES.BASE * 3,
+    shadowRadius: 0,
+    shadowOpacity: 0,
   },
 
   gradient: {
