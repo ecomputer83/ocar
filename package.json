@@ -10,7 +10,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@types/react-native-snap-carousel": "^3.7.4",
     "galio-framework": "^0.6.3",
+    "metro-config": "^0.57.0",
     "prop-types": "^15.7.2",
     "react": "16.9.0",
     "react-native": "0.61.5",
@@ -18,6 +20,7 @@
     "react-native-modal-dropdown": "^0.7.0",
     "react-native-reanimated": "~1.2.0",
     "react-native-screens": "1.0.0-alpha.23",
+    "react-native-snap-carousel": "^3.8.4",
     "react-native-svg": "^9.9.5",
     "react-native-unimodules": "0.6.0",
     "react-native-vector-icons": "^6.6.0",
@@ -34,6 +37,8 @@
     "babel-jest": "^24.9.0",
     "eslint": "^6.6.0",
     "jest": "^24.9.0",
+    "metro": "^0.57.0",
+    "metro-core": "^0.57.0",
     "metro-react-native-babel-preset": "^0.57.0",
     "react-test-renderer": "16.9.0"
   },

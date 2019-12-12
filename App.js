@@ -19,7 +19,7 @@ const assetImages = [
   Images.RegisterBackground,
   Images.ProfileBackground
 ];
-
+Images.Viewed.map(image => assetImages.push(image));
 function cacheImages(images) {
   return images.map(image => {
     if (typeof image === 'string') {

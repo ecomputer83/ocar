@@ -150,7 +150,7 @@ const HomeStack = createStackNavigator(
     Home: {
       screen: Home,
       navigationOptions: ({ navigation }) => ({
-        header: <Header transparent title="Home" navigation={navigation} />
+        header: <Header transparent slider title="Home" navigation={navigation} />
       })
     },
     // Pro: {

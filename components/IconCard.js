@@ -48,7 +48,7 @@ IconCard.propTypes = {
 };
 
 const styles = StyleSheet.create({
-    iconCard: {
+    iconCard: { 
         width: (width / 3) - 15,
         paddingHorizontal: 2,
         fontFamily: 'montserrat-regular'

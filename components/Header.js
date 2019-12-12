@@ -9,6 +9,8 @@ import Tabs from './Tabs';
 import Theme from '../constants/Theme';
 import Images from '../constants/Images';
 
+import { CarouselView } from '../components';
+
 const { height, width } = Dimensions.get('window');
 const iPhoneX = () =>
   Platform.OS === 'ios' && (height === 812 || width === 812 || height === 896 || width === 896);
@@ -71,19 +73,24 @@ class Header extends React.Component {
     );
   };
   renderMessage = () => {
-    const { navigation, Name } = this.props;
+    const { navigation, User } = this.props;
 
     return (
       <Block row style={styles.options}>
         <Block row middle>
             <Text style={{ fontFamily: 'montserrat-regular' }} size={16} style={styles.tabTitle}>
-              Welcome, {Name || 'Customer Name'}
+              Welcome, {User || 'Customer Name'}
             </Text>
         </Block>
       </Block>
     );
   };
 
+  renderSlider = () => {
+     return (
+       <CarouselView width={width - 20} item={Images.Viewed} />
+     )
+  };
   renderTabs = () => {
     const { tabs, tabIndex, navigation } = this.props;
     const defaultTab = tabs && tabs[0] && tabs[0].id;
@@ -99,12 +106,13 @@ class Header extends React.Component {
     );
   };
   renderHeader = () => {
-    const { search, message, tabs } = this.props;
-    if (search || tabs || message) {
+    const { search, message, tabs, slider } = this.props;
+    if (search || tabs || message || slider) {
       return (
         <Block center>
           {search ? this.renderSearch() : null}
           {message ? this.renderMessage() : null}
+          {slider ? this.renderSlider() : null}
           {tabs ? this.renderTabs() : null}
         </Block>
       );
@@ -114,6 +122,7 @@ class Header extends React.Component {
     const {
       back,
       title,
+      User,
       white,
       transparent,
       bgColor,

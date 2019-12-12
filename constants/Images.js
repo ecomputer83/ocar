@@ -12,13 +12,14 @@ const CreativeTimLogo = require('../assets/imgs/creative-tim-white-slim2.png');
 const InvisionLogo = require('../assets/imgs/invision-white-slim.png');
 
 const Viewed = [
-  require('../assets/imgs/project5.jpg'),
-  require('../assets/imgs/project7.jpg'),
-  require('../assets/imgs/project6.jpg'),
-  require('../assets/imgs/project4.jpg'),
-  require('../assets/imgs/project21.jpg'),
-  require('../assets/imgs/project24.jpg')
+  require('../assets/imgs/camry.jpg'),
+  require('../assets/imgs/corolla.jpg'),
+  require('../assets/imgs/prado.jpg'),
+  require('../assets/imgs/highlander.jpg'),
+  require('../assets/imgs/landcruiser.jpg')
 ];
+
+
 
 const Products = {
   text: 'View article',
