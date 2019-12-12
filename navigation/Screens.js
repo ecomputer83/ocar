@@ -150,18 +150,18 @@ const HomeStack = createStackNavigator(
     Home: {
       screen: Home,
       navigationOptions: ({ navigation }) => ({
-        header: <Header search options title="Home" navigation={navigation} />
+        header: <Header transparent title="Home" navigation={navigation} />
       })
     },
-    Pro: {
-      screen: Pro,
-      navigationOptions: ({ navigation }) => ({
-        header: (
-          <Header left={<Block />} white transparent title="" navigation={navigation} />
-        ),
-        headerTransparent: true
-      })
-    }
+    // Pro: {
+    //   screen: Pro,
+    //   navigationOptions: ({ navigation }) => ({
+    //     header: (
+    //       <Header left={<Block />} white transparent title="" navigation={navigation} />
+    //     ),
+    //     headerTransparent: true
+    //   })
+    // }
   },
   {
     cardStyle: {

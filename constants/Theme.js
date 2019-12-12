@@ -26,7 +26,7 @@ const COLORS = {
   PRICE_COLOR: '#EAD5FB',
   BORDER_COLOR: '#E7E7E7',
   BLOCK: '#E7E7E7',
-  ICON: '#172B4D',
+  ICON: '#DA1D23',
   ICON_INPUT: '#555555',
   HEADER: '#2c2c2c',
   BORDER: '#CAD1D7',
@@ -42,7 +42,8 @@ const COLORS = {
   GITHUB: '#333333',
   BEHANCE: '#1769ff',
   REDDIT: '#ff4500',
-  GOOGLE: '#dd4b39'
+  GOOGLE: '#dd4b39',
+  BODY: '#CCCCCC'
 };
 
 const SIZES = {

@@ -1,7 +1,7 @@
 import nowTheme from './Theme';
-import articles from './articles';
+import iconmenu from './iconmenu';
 import Images from './Images';
 import tabs from './tabs';
 import utils from './utils';
 
-export { articles, nowTheme, Images, tabs, utils };
+export { iconmenu, nowTheme, Images, tabs, utils };
