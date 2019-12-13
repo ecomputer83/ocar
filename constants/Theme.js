@@ -1,6 +1,6 @@
 const COLORS = {
   DEFAULT: '#F54E63',
-  PRIMARY: '#F20C29',
+  PRIMARY: '#DA1C23',
   LABEL: '#FE2472',
   INFO: '#2CA8FF',
   ERROR: '#FF3636',
@@ -26,7 +26,7 @@ const COLORS = {
   PRICE_COLOR: '#EAD5FB',
   BORDER_COLOR: '#E7E7E7',
   BLOCK: '#E7E7E7',
-  ICON: '#F20C29',
+  ICON: '#666666',
   ICON_INPUT: '#555555',
   HEADER: '#2c2c2c',
   BORDER: '#CAD1D7',
@@ -43,7 +43,8 @@ const COLORS = {
   BEHANCE: '#1769ff',
   REDDIT: '#ff4500',
   GOOGLE: '#dd4b39',
-  BODY: '#CCCCCC'
+  BODY: '#CCCCCC',
+  SLIDER_TEXT_COLOR: '#666666'
 };
 
 const SIZES = {

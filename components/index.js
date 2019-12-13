@@ -7,6 +7,6 @@ import Header from './Header';
 import Input from './Input';
 import Switch from './Switch';
 import Select from './Select';
-import CarouselView from './carousel';
+import MyCarousel from './carousel';
 
-export { Button, Card, IconCard, DrawerItem, Icon, Input, Header, Switch, Select, CarouselView };
+export { Button, Card, IconCard, DrawerItem, Icon, Input, Header, Switch, Select, MyCarousel };

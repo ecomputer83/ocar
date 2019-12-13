@@ -21,7 +21,7 @@ class IconCard extends React.Component {
           <Block middle >
           <Icon
             family="NowExtra"
-            size={36}
+            size={30}
             name={item.icon}
             color={nowTheme.COLORS['ICON']}
         />

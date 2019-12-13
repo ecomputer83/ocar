@@ -1,6 +1,6 @@
 import React from 'react';
 import { withNavigation } from 'react-navigation';
-import { TouchableOpacity, StyleSheet, Image, Platform, Dimensions } from 'react-native';
+import { ImageBackground, TouchableOpacity, StyleSheet, Image, Platform, Dimensions } from 'react-native';
 import { Button, Block, NavBar, Text, theme, Button as GaButton } from 'galio-framework';
 
 import Icon from './Icon';
@@ -8,8 +8,9 @@ import Input from './Input';
 import Tabs from './Tabs';
 import Theme from '../constants/Theme';
 import Images from '../constants/Images';
+import Products from '../constants/products';
 
-import { CarouselView } from '../components';
+import { MyCarousel } from '../components';
 
 const { height, width } = Dimensions.get('window');
 const iPhoneX = () =>
@@ -31,6 +32,7 @@ const AddButton = ({ isWhite, style, navigation, link }) => (
 
 
 class Header extends React.Component {
+
   handleLeftPress = () => {
     const { back, navigation } = this.props;
     return back ? navigation.goBack() : navigation.openDrawer();
@@ -51,15 +53,17 @@ class Header extends React.Component {
 
       case 'Home':
         return [
-          <Image style={styles.logo} source={Images.Logo} />
+          <Image key="1" style={styles.logo} source={Images.Logo} />
         ];
       default:
         break;
     }
   };
   renderSearch = () => {
-    const { navigation } = this.props;
+    const { navigation, bgColor } = this.props;
     return (
+      bgColor ? (
+      <Block style={{width: width, backgroundColor: Theme.COLORS.BODY}}> 
       <Input
         right
         color="black"
@@ -67,9 +71,22 @@ class Header extends React.Component {
         placeholder="What are you looking for?"
         placeholderTextColor={'#8898AA'}
         iconContent={
-          <Icon size={16} color={theme.COLORS.MUTED} name="zoom-bold2x" family="NowExtra" />
+          <Icon size={16} color={theme.COLORS.MUTED} name="search" family="NowExtra" />
         }
       />
+      </Block>)
+      : (
+        <Input
+        right
+        color="black"
+        style={styles.search}
+        placeholder="What are you looking for?"
+        placeholderTextColor={'#8898AA'}
+        iconContent={
+          <Icon size={16} color={theme.COLORS.MUTED} name="search" family="NowExtra" />
+        }
+      />
+      )
     );
   };
   renderMessage = () => {
@@ -88,7 +105,7 @@ class Header extends React.Component {
 
   renderSlider = () => {
      return (
-       <CarouselView width={width - 20} item={Images.Viewed} />
+       <MyCarousel imagewidth={width} item={Products} />
      )
   };
   renderTabs = () => {
@@ -110,9 +127,9 @@ class Header extends React.Component {
     if (search || tabs || message || slider) {
       return (
         <Block center>
-          {search ? this.renderSearch() : null}
           {message ? this.renderMessage() : null}
           {slider ? this.renderSlider() : null}
+          {search ? this.renderSearch() : null}
           {tabs ? this.renderTabs() : null}
         </Block>
       );
@@ -135,7 +152,8 @@ class Header extends React.Component {
     const noShadow = ['Search', 'Profile'].includes(routeName);
     const headerStyles = [
       !noShadow ? styles.shadow : null,
-      transparent ? { backgroundColor: 'rgba(0,0,0,0)' } : null
+      transparent ? { backgroundColor: 'rgba(0,0,0,0)' } : null,
+      bgColor ? { backgroundColor: bgColor } : null,
     ];
 
     const navbarStyles = [styles.navbar, bgColor && { backgroundColor: bgColor }];
@@ -213,11 +231,11 @@ const styles = StyleSheet.create({
     borderRightColor: theme.COLORS.ICON
   },
   search: {
-    height: 48,
-    width: width - 32,
-    marginHorizontal: 16,
-    borderWidth: 1,
-    borderRadius: 30,
+    height: 40,
+    width: width - 10,
+    marginHorizontal: 4,
+    borderWidth: 0.5,
+    borderRadius: 10,
     borderColor: Theme.COLORS.BORDER
   },
   options: {

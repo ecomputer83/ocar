@@ -6,7 +6,7 @@ import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 // screens
 import Home from '../screens/Home';
-import Pro from '../screens/Pro';
+import Login from '../screens/Login';
 import Profile from '../screens/Profile';
 import Register from '../screens/Register';
 import Components from '../screens/Components';
@@ -19,6 +19,7 @@ import SettingsScreen from '../screens/Settings';
 // drawer
 import Menu from './Menu';
 import DrawerItem from '../components/DrawerItem';
+import nowTheme from '../constants/Theme';
 
 // header for screens
 import Header from '../components/Header';
@@ -150,7 +151,7 @@ const HomeStack = createStackNavigator(
     Home: {
       screen: Home,
       navigationOptions: ({ navigation }) => ({
-        header: <Header transparent slider title="Home" navigation={navigation} />
+        header: <Header bgColor="#810F06" white iconColor={nowTheme.COLORS.WHITE} slider search title="Home" navigation={navigation} />
       })
     },
     // Pro: {
@@ -175,6 +176,12 @@ const AppStack = createDrawerNavigator(
   {
     Onboarding: {
       screen: Onboarding,
+      navigationOptions: {
+        drawerLabel: () => { }
+      }
+    },
+    Login: {
+      screen: Login,
       navigationOptions: {
         drawerLabel: () => { }
       }
@@ -210,7 +217,7 @@ const AppStack = createDrawerNavigator(
       })
     },
     VehicleShowroom: {
-      screen: ComponentsStack,
+      screen: HomeStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
           <DrawerItem focused={focused} screen="Components" title="Vehicle Showroom" />
@@ -218,7 +225,7 @@ const AppStack = createDrawerNavigator(
       })
     },
     PartsEnquiry: {
-      screen: ComponentsStack,
+      screen: HomeStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
           <DrawerItem focused={focused} screen="Components" title="Parts Enquiry" />
@@ -226,7 +233,7 @@ const AppStack = createDrawerNavigator(
       })
     },
     DiagnosticExperts: {
-      screen: ComponentsStack,
+      screen: HomeStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
           <DrawerItem focused={focused} screen="Components" title="Diagnostic Experts" />
@@ -234,7 +241,7 @@ const AppStack = createDrawerNavigator(
       })
     },
     TowService: {
-      screen: ArticlesStack,
+      screen: HomeStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
           <DrawerItem focused={focused} screen="Articles" title="Tow Service" />
@@ -242,7 +249,7 @@ const AppStack = createDrawerNavigator(
       })
     },
     LatestPromos: {
-      screen: ProfileStack,
+      screen: HomeStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
           <DrawerItem focused={focused} screen="Profile" title="Latest Promos" />
@@ -250,7 +257,7 @@ const AppStack = createDrawerNavigator(
       })
     },
     SafetyTips: {
-      screen: AccountStack,
+      screen: HomeStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
           <DrawerItem focused={focused} screen="Register" title="Safety Tips" />
@@ -258,7 +265,7 @@ const AppStack = createDrawerNavigator(
       })
     },
     Notifications: {
-      screen: AccountStack,
+      screen: HomeStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
           <DrawerItem focused={focused} screen="Register" title="Notifications" />
@@ -266,7 +273,7 @@ const AppStack = createDrawerNavigator(
       })
     },
     ServiceCenters: {
-      screen: AccountStack,
+      screen: HomeStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
           <DrawerItem focused={focused} screen="Register" title="Service Centers" />
@@ -274,7 +281,7 @@ const AppStack = createDrawerNavigator(
       })
     },
     AccreditedDealers: {
-      screen: AccountStack,
+      screen: HomeStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
           <DrawerItem focused={focused} screen="Register" title="Accredited Dealers" />

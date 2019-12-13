@@ -10,6 +10,7 @@ const androidLogo = require('../assets/imgs/android.png');
 const ProfilePicture = require('../assets/imgs/profile-img.jpg');
 const CreativeTimLogo = require('../assets/imgs/creative-tim-white-slim2.png');
 const InvisionLogo = require('../assets/imgs/invision-white-slim.png');
+const HeaderBackground = require('../assets/imgs/header.png');
 
 const Viewed = [
   require('../assets/imgs/camry.jpg'),
@@ -39,5 +40,6 @@ export default {
   iOSLogo,
   androidLogo,
   CreativeTimLogo,
-  InvisionLogo
+  InvisionLogo,
+  HeaderBackground
 };

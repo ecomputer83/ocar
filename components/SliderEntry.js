@@ -4,16 +4,9 @@ import PropTypes from 'prop-types';
 import { ParallaxImage } from 'react-native-snap-carousel';
 
 import { nowTheme } from '../constants';
-export default class SliderEntry extends Component {
+class SliderEntry extends React.Component {
 
-    static propTypes = {
-        data: PropTypes.object.isRequired,
-        even: PropTypes.bool,
-        parallax: PropTypes.bool,
-        parallaxProps: PropTypes.object
-    };
-
-    get image () {
+    image = () => {
         const { data, parallax, parallaxProps, even } = this.props;
 
         return parallax ? (
@@ -34,7 +27,7 @@ export default class SliderEntry extends Component {
         );
     }
 
-    render () {
+    render = () => {
         const { data, even } = this.props;
 
         // const uppercaseTitle = title ? (
@@ -54,7 +47,7 @@ export default class SliderEntry extends Component {
               >
                 <View style={styles.shadow} />
                 <View style={[styles.imageContainer, even ? styles.imageContainerEven : {}]}>
-                    { this.image }
+                    { this.image() }
                     <View style={[styles.radiusMask, even ? styles.radiusMaskEven : {}]} />
                 </View>
                 {/* <View style={[styles.textContainer, even ? styles.textContainerEven : {}]}>
@@ -73,7 +66,7 @@ export default class SliderEntry extends Component {
 const IS_IOS = Platform.OS === 'ios';
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
-function wp (percentage) {
+ wp = (percentage) => {
     const value = (percentage * viewportWidth) / 100;
     return Math.round(value);
 }
@@ -167,3 +160,4 @@ const styles =  StyleSheet.create({
     }
 });
 
+export default SliderEntry

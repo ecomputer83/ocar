@@ -5,8 +5,9 @@ import { Block, Button, Text, theme } from 'galio-framework';
 const { height, width } = Dimensions.get('screen');
 import { Images, nowTheme } from '../constants/';
 import { HeaderHeight } from '../constants/utils';
-
-export default class Onboarding extends React.Component {
+import Input from '../components/Input';
+import Icon from '../components/Icon';
+export default class Login extends React.Component {
   render() {
     const { navigation } = this.props;
 
@@ -21,55 +22,70 @@ export default class Onboarding extends React.Component {
           <Block space="between" style={styles.padded}>
             <Block>
               <Block middle>
-                <Image source={Images.Logo} style={{ width: 138, height: 124, bottom: 100, position: 'absolute' }} />
+                <Image source={Images.Logo} style={{ width: 138, height: 124, bottom: 40, position: 'absolute' }} />
               </Block>
-              <Block>
-                <Block middle>
-                  <Text
-                    style={{
-                      fontFamily: 'montserrat-regular', letterSpacing: 1, paddingHorizontal: 10, textAlign: 'center'
-                    }}
-                    color="white"
-                    size={24}
-                  >
-                    Welcome to Toyota (Nig.) Limited
-                    End User Mobile App.
-                  </Text>
-                </Block>
-              </Block>
-              <Block middle style={{
+              
+              <Block style={{
                   marginTop: theme.SIZES.BASE * 1.5,
                 }}>
-                <Text
-                  color="white"
-                  size={16}
-                  style={{ fontFamily: 'montserrat-regular' }}
-                >
-                  To enjoy the full features available on this app, you are required to register
-                </Text>
-                
+                <Block style={{marginVertical: 2.5}}>
+                <Input
+                    left
+                    color="black"
+                    style={styles.input}
+                    placeholder="UserName"
+                    placeholderTextColor={'#8898AA'}
+                    iconContent={
+                      <Icon size={18} color={theme.COLORS.MUTED} name="photo" family="NowExtra" />
+                    }
+                />
+                </Block>
+                <Block style={{marginVertical: 2.5}}>
+                <Input
+                    noicon
+                    color="black"
+                    style={styles.input}
+                    password 
+                    viewPass
+                />
+                </Block>
               </Block>
               
 
               <Block
               
                 style={{
-                  marginTop: theme.SIZES.BASE * 3.5,
-                  marginBottom: theme.SIZES.BASE * 2
+                  marginTop: 3.5,
+                  marginBottom: theme.SIZES.BASE * 10
                 }}
               >
-                <Block row>
+                <Block>
                 <Button
                   shadowless
-                  style={styles.loginbutton}
+                  style={styles.button}
                   color={nowTheme.COLORS.PRIMARY}
-                  onPress={() => navigation.navigate('Login')}
+                  onPress={() => navigation.navigate('Home')}
                 >
                   <Text
                     style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}
                     color={theme.COLORS.WHITE}
                   >
                     Login
+                  </Text>
+                </Button>
+                </Block>
+                <Block row>
+                <Button
+                  shadowless
+                  style={styles.loginbutton}
+                  color={nowTheme.COLORS.PRIMARY}
+                  onPress={() => navigation.navigate('Home')}
+                >
+                  <Text
+                    style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}
+                    color={theme.COLORS.WHITE}
+                  >
+                    Create Account
                   </Text>
                 </Button>
                 <Button
@@ -82,22 +98,7 @@ export default class Onboarding extends React.Component {
                     style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}
                     color={theme.COLORS.WHITE}
                   >
-                    Create Account
-                  </Text>
-                </Button>
-                </Block>
-                <Block>
-                <Button
-                  shadowless
-                  style={styles.button}
-                  color={nowTheme.COLORS.PRIMARY}
-                  onPress={() => navigation.navigate('Home')}
-                >
-                  <Text
-                    style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}
-                    color={theme.COLORS.WHITE}
-                  >
-                    No Thanks, Maybe later
+                    No Thanks
                   </Text>
                 </Button>
                 </Block>
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
     height: theme.SIZES.BASE * 3,
     shadowRadius: 0,
     shadowOpacity: 0,
-    marginTop: 5
+    marginBottom: 5
   },
 
   loginbutton: {
@@ -151,5 +152,10 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: 66
-  }
+  },
+  input: {
+    height: 50,
+    width:  width - theme.SIZES.BASE * 4,
+    marginHorizontal: 4
+  },
 });

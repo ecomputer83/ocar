@@ -3,7 +3,7 @@ import { Image } from 'react-native';
 import { Block, GalioProvider } from 'galio-framework';
 
 import Screens from './navigation/Screens';
-import { Images, nowTheme } from './constants';
+import { Images, nowTheme, Products } from './constants';
 
 // cache app images
 const assetImages = [
@@ -17,9 +17,10 @@ const assetImages = [
   Images.CreativeTimLogo,
   Images.InvisionLogo,
   Images.RegisterBackground,
-  Images.ProfileBackground
+  Images.ProfileBackground,
+  Images.HeaderBackground
 ];
-Images.Viewed.map(image => assetImages.push(image));
+Products.map(p => assetImages.push(p.featureimage));
 function cacheImages(images) {
   return images.map(image => {
     if (typeof image === 'string') {
@@ -33,9 +34,9 @@ export default class App extends React.Component {
     fontLoaded: false
   };
 
-  async componentDidMount() {
-    _loadResourcesAsync();
-  }
+  // async componentDidMount() {
+  //   _loadResourcesAsync();
+  // }
 
   render() {
   
