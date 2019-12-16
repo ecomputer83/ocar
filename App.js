@@ -18,7 +18,8 @@ const assetImages = [
   Images.InvisionLogo,
   Images.RegisterBackground,
   Images.ProfileBackground,
-  Images.HeaderBackground
+  Images.HeaderBackground,
+  Images.Vehicle
 ];
 Products.map(p => assetImages.push(p.featureimage));
 function cacheImages(images) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, Image, StyleSheet, StatusBar, Dimensions, Platform } from 'react-native';
+import { ImageBackground, Image, StyleSheet, StatusBar, Dimensions, Platform, TouchableWithoutFeedback } from 'react-native';
 import { Block, Button, Text, theme } from 'galio-framework';
 
 const { height, width } = Dimensions.get('screen');
@@ -7,11 +7,16 @@ import { Images, nowTheme } from '../constants/';
 import { HeaderHeight } from '../constants/utils';
 import Input from '../components/Input';
 import Icon from '../components/Icon';
+
+const DismissKeyboard = ({ children }) => (
+  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>{children}</TouchableWithoutFeedback>
+);
 export default class Login extends React.Component {
   render() {
     const { navigation } = this.props;
 
     return (
+      <DismissKeyboard>
       <Block flex style={styles.container}>
         <StatusBar barStyle="light-content" />
         <Block flex>
@@ -79,7 +84,7 @@ export default class Login extends React.Component {
                   shadowless
                   style={styles.loginbutton}
                   color={nowTheme.COLORS.PRIMARY}
-                  onPress={() => navigation.navigate('Home')}
+                  onPress={() => navigation.navigate('Register')}
                 >
                   <Text
                     style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}
@@ -107,6 +112,7 @@ export default class Login extends React.Component {
           </Block>
         </Block>
       </Block>
+      </DismissKeyboard>
     );
   }
 }

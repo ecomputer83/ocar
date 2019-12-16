@@ -8,5 +8,8 @@ import Input from './Input';
 import Switch from './Switch';
 import Select from './Select';
 import MyCarousel from './carousel';
+import ProductCard from './ProductCard';
+import VehicleCard from './VehicleCard';
+import DetailCard from './DetailCard';
 
-export { Button, Card, IconCard, DrawerItem, Icon, Input, Header, Switch, Select, MyCarousel };
+export { Button, Card, IconCard, DrawerItem, Icon, Input, Header, Switch, Select, MyCarousel, ProductCard, VehicleCard, DetailCard };

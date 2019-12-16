@@ -24,7 +24,7 @@ const AddButton = ({ isWhite, style, navigation, link }) => (
     <Icon
       family="NowExtra"
       size={16}
-      name="bulb"
+      name="add"
       color={Theme.COLORS[isWhite ? 'WHITE' : 'ICON']}
     />
   </TouchableOpacity>
@@ -44,7 +44,7 @@ class Header extends React.Component {
     switch (routeName) {
       case 'MyVehicles':
         return [
-          <AddButton key="add-vehicle" navigation={navigation} isWhite={white} />
+          <AddButton key="add-vehicle" navigation={navigation} isWhite={white} link="AddVehicle" />
         ];
       case 'MyAppointments':
         return [
@@ -103,6 +103,18 @@ class Header extends React.Component {
     );
   };
 
+  renderVehicle = () => {
+    const { navigation } = this.props;
+
+    return (
+      <Block row style={styles.options}>
+        <Block row middle>
+            <Image source={Images.Vehicle} style={styles.avatar} />
+        </Block>
+      </Block>
+    );
+  };
+
   renderSlider = () => {
      return (
        <MyCarousel imagewidth={width} item={Products} />
@@ -123,14 +135,15 @@ class Header extends React.Component {
     );
   };
   renderHeader = () => {
-    const { search, message, tabs, slider } = this.props;
-    if (search || tabs || message || slider) {
+    const { search, message, tabs, slider, vehicle } = this.props;
+    if (search || tabs || message || slider || vehicle) {
       return (
         <Block center>
           {message ? this.renderMessage() : null}
           {slider ? this.renderSlider() : null}
           {search ? this.renderSearch() : null}
           {tabs ? this.renderTabs() : null}
+          {vehicle ? this.renderVehicle() : null}
         </Block>
       );
     }
@@ -159,7 +172,13 @@ class Header extends React.Component {
     const navbarStyles = [styles.navbar, bgColor && { backgroundColor: bgColor }];
 
     return (
+
       <Block style={headerStyles}>
+        <ImageBackground
+          source={Images.HeaderBackground}
+          style={styles.profileContainer}
+          imageStyle={styles.profileBackground}
+        >
         <NavBar
           title={title}
           style={navbarStyles}
@@ -184,6 +203,7 @@ class Header extends React.Component {
           {...props}
         />
         {this.renderHeader()}
+        </ImageBackground>
       </Block>
     );
   }
@@ -205,6 +225,12 @@ const styles = StyleSheet.create({
     paddingBottom: theme.SIZES.BASE * 1.5,
     paddingTop: iPhoneX ? theme.SIZES.BASE * 3 : theme.SIZES.BASE,
     zIndex: 5
+  },
+  avatar: {
+    width: 60,
+    height: 60,
+    borderRadius: 50,
+    borderWidth: 0
   },
   shadow: {
     backgroundColor: theme.COLORS.WHITE,
@@ -261,6 +287,16 @@ const styles = StyleSheet.create({
     height: theme.SIZES.BASE * 3.5,
     borderRadius: theme.SIZES.BASE * 1.75,
     justifyContent: 'center'
+  },
+  profileContainer: {
+    width,
+    height: 'auto',
+    padding: 0,
+    zIndex: 1
+  },
+  profileBackground: {
+    width,
+    height: 'auto'
   },
   logo: {
     height: 80,

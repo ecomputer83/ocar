@@ -7,11 +7,15 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 // screens
 import Home from '../screens/Home';
 import Login from '../screens/Login';
-import Profile from '../screens/Profile';
+import MyAppointments from '../screens/MyAppointment';
 import Register from '../screens/Register';
 import Components from '../screens/Components';
-import Articles from '../screens/Articles';
+import Vehicles from '../screens/Products';
 import Onboarding from '../screens/Onboarding';
+import AddVehicle from '../screens/AddVehicle';
+import MyVehicles from '../screens/MyVehicles';
+import MyVehicleStatus from '../screens/MyVehicleStatus';
+import MyVehicleDetail from '../screens/MyVehicleDetail';
 
 // settings
 import SettingsScreen from '../screens/Settings';
@@ -78,12 +82,12 @@ const ComponentsStack = createStackNavigator(
   }
 );
 
-const SettingsStack = createStackNavigator(
+const AddVehicleStack = createStackNavigator(
   {
-    Settings: {
-      screen: SettingsScreen,
+    AddVehicle: {
+      screen: AddVehicle,
       navigationOptions: ({ navigation }) => ({
-        header: <Header title="Settings" navigation={navigation} />
+        header: <Header  transparent white iconColor={nowTheme.COLORS.WHITE} title="Add Vehicle" navigation={navigation} />
       })
     }
   },
@@ -93,12 +97,12 @@ const SettingsStack = createStackNavigator(
   }
 );
 
-const ArticlesStack = createStackNavigator(
+const ProductsStack = createStackNavigator(
   {
-    Articles: {
-      screen: Articles,
+    Products: {
+      screen: Vehicles,
       navigationOptions: ({ navigation }) => ({
-        header: <Header title="Articles" navigation={navigation} />
+        header: <Header transparent white iconColor={nowTheme.COLORS.WHITE} search title="Our Vehicles" navigation={navigation} />
       })
     }
   },
@@ -110,13 +114,13 @@ const ArticlesStack = createStackNavigator(
   }
 );
 
-const ProfileStack = createStackNavigator(
+const MyAppointmentStack = createStackNavigator(
   {
-    Profile: {
-      screen: Profile,
+    MyAppointments: {
+      screen: MyAppointments,
       navigationOptions: ({ navigation }) => ({
         header: (
-          <Header white transparent title="Profile" iconColor={'#FFF'} navigation={navigation} />
+          <Header transparent white iconColor={nowTheme.COLORS.WHITE} search message title="Our Appointments"  navigation={navigation} />
         ),
         headerTransparent: true
       })
@@ -128,13 +132,49 @@ const ProfileStack = createStackNavigator(
   }
 );
 
-const AccountStack = createStackNavigator(
+const MyVehicleStatusStack = createStackNavigator(
   {
-    Account: {
-      screen: Register,
+    MyVehicleStatus: {
+      screen: MyVehicleStatus,
       navigationOptions: ({ navigation }) => ({
         header: (
-          <Header transparent title="Create Account" iconColor={'#333'} navigation={navigation} />
+          <Header transparent white iconColor={nowTheme.COLORS.WHITE} search message title="My Service Status"  navigation={navigation} />
+        ),
+        headerTransparent: true
+      })
+    }
+  },
+  {
+    cardStyle: { backgroundColor: '#FFFFFF' },
+    transitionConfig
+  }
+);
+
+const MyVehicleStack = createStackNavigator(
+  {
+    MyVehicles: {
+      screen: MyVehicles,
+      navigationOptions: ({ navigation }) => ({
+        header: (
+          <Header transparent title="My Vehicles" transparent white iconColor={nowTheme.COLORS.WHITE} search message navigation={navigation} />
+        ),
+        headerTransparent: true
+      })
+    }
+  },
+  {
+    cardStyle: { backgroundColor: '#FFFFFF' },
+    transitionConfig
+  }
+);
+
+const VehicleDetailStack = createStackNavigator(
+  {
+    VehicleDetail: {
+      screen: MyVehicleDetail,
+      navigationOptions: ({ navigation }) => ({
+        header: (
+          <Header transparent title="Vehicle Details" transparent white iconColor={nowTheme.COLORS.WHITE} vehicle  navigation={navigation} />
         ),
         headerTransparent: true
       })
@@ -151,7 +191,7 @@ const HomeStack = createStackNavigator(
     Home: {
       screen: Home,
       navigationOptions: ({ navigation }) => ({
-        header: <Header bgColor="#810F06" white iconColor={nowTheme.COLORS.WHITE} slider search title="Home" navigation={navigation} />
+        header: <Header transparent iconColor={nowTheme.COLORS.WHITE} slider search title="Home" navigation={navigation} />
       })
     },
     // Pro: {
@@ -186,6 +226,24 @@ const AppStack = createDrawerNavigator(
         drawerLabel: () => { }
       }
     },
+    Register: {
+      screen: Register,
+      navigationOptions: {
+        drawerLabel: () => { }
+      }
+    },
+    AddVehicle: {
+      screen: AddVehicleStack,
+      navigationOptions: {
+        drawerLabel: () => {}
+      }
+    },
+    VehicleDetail: {
+      screen: VehicleDetailStack,
+      navigationOptions: {
+        drawerLabel: () => {}
+      }
+    },
     Home: {
       screen: HomeStack,
       navigationOptions: navOpt => ({
@@ -193,19 +251,19 @@ const AppStack = createDrawerNavigator(
       })
     },
     MyVehicles: {
-      screen: HomeStack,
+      screen: MyVehicleStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => <DrawerItem title="My Vehicles" />
       })
     },
     MyAppointments: {
-      screen: HomeStack,
+      screen: MyAppointmentStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => <DrawerItem title="My Appointments" />
       })
     },
     MyServiceStatus: {
-      screen: HomeStack,
+      screen: MyVehicleStatusStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => <DrawerItem title="My Service Status" />
       })
@@ -217,10 +275,10 @@ const AppStack = createDrawerNavigator(
       })
     },
     VehicleShowroom: {
-      screen: HomeStack,
+      screen: ProductsStack,
       navigationOptions: navOpt => ({
         drawerLabel: ({ focused }) => (
-          <DrawerItem focused={focused} screen="Components" title="Vehicle Showroom" />
+          <DrawerItem focused={focused} screen="Products" title="Vehicle Showroom" />
         )
       })
     },

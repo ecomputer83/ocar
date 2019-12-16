@@ -2,6 +2,7 @@ import React from 'react';
 import {
   StyleSheet,
   ImageBackground,
+  Image,
   Dimensions,
   StatusBar,
   TouchableWithoutFeedback,
@@ -20,18 +21,23 @@ const DismissKeyboard = ({ children }) => (
 
 class Register extends React.Component {
   render() {
+    const { navigation } = this.props;
+    
     return (
       <DismissKeyboard>
         <Block flex middle>
           <ImageBackground
-            source={Images.RegisterBackground}
+            source={Images.Onboarding}
             style={styles.imageBackgroundContainer}
             imageStyle={styles.imageBackground}
           >
             <Block flex middle>
+            <Block middle>
+                <Image source={Images.Logo} style={{ width: 118, height: 104, bottom: 10 }} />
+              </Block>
               <Block style={styles.registerContainer}>
                 <Block flex space="evenly">
-                  <Block flex={0.4} middle style={styles.socialConnect}>
+                  <Block flex={0.1} middle style={styles.socialConnect}>
                     <Block flex={0.5} middle>
                       <Text
                         style={{
@@ -44,84 +50,21 @@ class Register extends React.Component {
                         Register
                       </Text>
                     </Block>
-
-                    <Block flex={0.5} row middle space="between" style={{ marginBottom: 18 }}>
-                      <GaButton
-                        round
-                        onlyIcon
-                        shadowless
-                        icon="twitter"
-                        iconFamily="Font-Awesome"
-                        iconColor={theme.COLORS.WHITE}
-                        iconSize={theme.SIZES.BASE * 1.625}
-                        color={nowTheme.COLORS.TWITTER}
-                        style={[styles.social, styles.shadow]}
-                      />
-
-                      <GaButton
-                        round
-                        onlyIcon
-                        shadowless
-                        icon="dribbble"
-                        iconFamily="Font-Awesome"
-                        iconColor={theme.COLORS.WHITE}
-                        iconSize={theme.SIZES.BASE * 1.625}
-                        color={nowTheme.COLORS.DRIBBBLE}
-                        style={[styles.social, styles.shadow]}
-                      />
-                      <GaButton
-                        round
-                        onlyIcon
-                        shadowless
-                        icon="facebook"
-                        iconFamily="Font-Awesome"
-                        iconColor={theme.COLORS.WHITE}
-                        iconSize={theme.SIZES.BASE * 1.625}
-                        color={nowTheme.COLORS.FACEBOOK}
-                        style={[styles.social, styles.shadow]}
-                      />
-                    </Block>
-                  </Block>
-                  <Block flex={0.1} middle>
-                    <Text
-                      style={{
-                        fontFamily: 'montserrat-regular',
-                        textAlign: 'center'
-                      }}
-                      muted
-                      size={16}
-                    >
-                      or be classical
-                    </Text>
                   </Block>
                   <Block flex={1} middle space="between">
                     <Block center flex={0.9}>
                       <Block flex space="between">
                         <Block>
-                          <Block width={width * 0.8} style={{ marginBottom: 5 }}>
+                          <Block width={width * 0.8} style={{ marginBottom: 5, marginTop: 5 }}>
                             <Input
-                              placeholder="First Name"
+                              placeholder="Phone"
+                              color="black"
                               style={styles.inputs}
                               iconContent={
                                 <Icon
                                   size={16}
                                   color="#ADB5BD"
-                                  name="profile-circle"
-                                  family="NowExtra"
-                                  style={styles.inputIcons}
-                                />
-                              }
-                            />
-                          </Block>
-                          <Block width={width * 0.8} style={{ marginBottom: 5 }}>
-                            <Input
-                              placeholder="Last Name"
-                              style={styles.inputs}
-                              iconContent={
-                                <Icon
-                                  size={16}
-                                  color="#ADB5BD"
-                                  name="caps-small2x"
+                                  name="phone"
                                   family="NowExtra"
                                   style={styles.inputIcons}
                                 />
@@ -131,6 +74,7 @@ class Register extends React.Component {
                           <Block width={width * 0.8}>
                             <Input
                               placeholder="Email"
+                              color="black"
                               style={styles.inputs}
                               iconContent={
                                 <Icon
@@ -143,37 +87,73 @@ class Register extends React.Component {
                               }
                             />
                           </Block>
-                          <Block
-                            style={{ marginVertical: theme.SIZES.BASE, marginLeft: 15}}
-                            row
-                            width={width * 0.75}
-                          >
-                            <Checkbox
-                              checkboxStyle={{
-                                borderWidth: 1,
-                                borderRadius: 2,
-                                borderColor: '#E3E3E3'
-                              }}
-                              color={nowTheme.COLORS.PRIMARY}
-                              labelStyle={{
-                                color: nowTheme.COLORS.HEADER,
-                                fontFamily: 'montserrat-regular'
-                              }}
-                              label="I agree to the terms and conditions."
+                          <Block width={width * 0.8} style={{ marginBottom: 5 }}>
+                            <Input
+                              placeholder="Password"
+                              noicon
+                              color="black"
+                              style={styles.inputs}
+                              password 
+                              viewPass
                             />
                           </Block>
+                          <Block width={width * 0.8} style={{ marginBottom: 5 }}>
+                            <Input
+                              placeholder="Confirm Password"
+                              noicon
+                              color="black"
+                              style={styles.inputs}
+                              password 
+                              viewPass
+                            />
+                          </Block>
+                          <Block style={{marginBottom:  10}}>
+                <Block>
+                <GaButton
+                  shadowless
+                  style={styles.button}
+                  color={nowTheme.COLORS.PRIMARY}
+                  onPress={() => navigation.navigate('Home')}
+                >
+                  <Text
+                    style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}
+                    color={theme.COLORS.WHITE}
+                  >
+                    Register
+                  </Text>
+                </GaButton>
+                </Block>
+                <Block row>
+                <GaButton
+                  shadowless
+                  style={styles.loginbutton}
+                  color={nowTheme.COLORS.PRIMARY}
+                  onPress={() => navigation.navigate('Login')}
+                >
+                  <Text
+                    style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}
+                    color={theme.COLORS.WHITE}
+                  >
+                    Login
+                  </Text>
+                </GaButton>
+                <GaButton
+                  shadowless
+                  style={styles.registerbutton}
+                  color={nowTheme.COLORS.PRIMARY}
+                  onPress={() => navigation.navigate('Home')}
+                >
+                  <Text
+                    style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}
+                    color={theme.COLORS.WHITE}
+                  >
+                    No Thanks
+                  </Text>
+                </GaButton>
+                </Block>
+              </Block>
                         </Block>
-                        <Block center>
-                          <Button color="primary" round style={styles.createButton}>
-                            <Text
-                              style={{ fontFamily: 'montserrat-bold' }}
-                              size={14}
-                              color={nowTheme.COLORS.WHITE}
-                            >
-                              Get Started
-                            </Text>
-                          </Button>
-                        </Block>
+                        
                       </Block>
                     </Block>
                   </Block>
@@ -199,10 +179,11 @@ const styles = StyleSheet.create({
     height: height
   },
   registerContainer: {
-    marginTop: 55,
+    marginTop: 15,
     width: width * 0.9,
-    height: height < 812 ? height * 0.8 : height * 0.8,
+    height: height < 812 ? height * 0.6 : height * 0.6,
     backgroundColor: nowTheme.COLORS.WHITE,
+    opacity: 0.7,
     borderRadius: 4,
     shadowColor: nowTheme.COLORS.BLACK,
     shadowOffset: {
@@ -244,7 +225,7 @@ const styles = StyleSheet.create({
   inputs: {
     borderWidth: 1,
     borderColor: '#E3E3E3',
-    borderRadius: 21.5
+    borderRadius: 0
   },
   passwordCheck: {
     paddingLeft: 2,
@@ -262,7 +243,29 @@ const styles = StyleSheet.create({
     borderRadius: theme.SIZES.BASE * 1.75,
     justifyContent: 'center',
     marginHorizontal: 10
-  }
+  },
+  button: {
+    width: (width * 0.8),
+    height: theme.SIZES.BASE * 3,
+    shadowRadius: 0,
+    shadowOpacity: 0,
+    marginBottom: 5
+  },
+
+  loginbutton: {
+    width: ((width * 0.8) /2),
+    height: theme.SIZES.BASE * 3,
+    shadowRadius: 0,
+    shadowOpacity: 0,
+    marginRight: 5
+  },
+
+  registerbutton: {
+    width: ((width * 0.8) /2),
+    height: theme.SIZES.BASE * 3,
+    shadowRadius: 0,
+    shadowOpacity: 0,
+  },
 });
 
 export default Register;

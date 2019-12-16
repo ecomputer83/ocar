@@ -28,7 +28,7 @@ const COLORS = {
   BLOCK: '#E7E7E7',
   ICON: '#666666',
   ICON_INPUT: '#555555',
-  HEADER: '#2c2c2c',
+  HEADER: '#FFFFFF',
   BORDER: '#CAD1D7',
   WHITE: '#FFFFFF',
   BLACK: '#000000',

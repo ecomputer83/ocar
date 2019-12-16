@@ -4,5 +4,7 @@ import Images from './Images';
 import tabs from './tabs';
 import utils from './utils';
 import Products from './products';
+import articles from './articles';
+import myvehicle from './myvehicle';
 
-export { iconmenu, nowTheme, Images, tabs, utils, Products };
+export { iconmenu, nowTheme, Images, tabs, utils, Products, articles, myvehicle };

@@ -76,7 +76,7 @@ export default class Onboarding extends React.Component {
                   shadowless
                   style={styles.registerbutton}
                   color={nowTheme.COLORS.PRIMARY}
-                  onPress={() => navigation.navigate('Home')}
+                  onPress={() => navigation.navigate('Register')}
                 >
                   <Text
                     style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}
