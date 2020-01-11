@@ -16,6 +16,8 @@ import AddVehicle from '../screens/AddVehicle';
 import MyVehicles from '../screens/MyVehicles';
 import MyVehicleStatus from '../screens/MyVehicleStatus';
 import MyVehicleDetail from '../screens/MyVehicleDetail';
+import BookOptionModal from '../screens/BookOptionModal';
+import ServiceList from '../screens/ServiceList';
 
 // settings
 import SettingsScreen from '../screens/Settings';
@@ -27,6 +29,7 @@ import nowTheme from '../constants/Theme';
 
 // header for screens
 import Header from '../components/Header';
+import AddAppointment from '../screens/AddAppointment';
 
 const transitionConfig = (transitionProps, prevTransitionProps) => ({
   transitionSpec: {
@@ -87,7 +90,52 @@ const AddVehicleStack = createStackNavigator(
     AddVehicle: {
       screen: AddVehicle,
       navigationOptions: ({ navigation }) => ({
-        header: <Header  transparent white iconColor={nowTheme.COLORS.WHITE} title="Add Vehicle" navigation={navigation} />
+        header: <Header  transparent back white iconColor={nowTheme.COLORS.WHITE} title="Add Vehicle" navigation={navigation} />
+      })
+    }
+  },
+  {
+    cardStyle: { backgroundColor: '#FFFFFF' },
+    transitionConfig
+  }
+);
+
+const BookOptionStack = createStackNavigator(
+  {
+    BookOption: {
+      screen: BookOptionModal,
+      navigationOptions: ({ navigation }) => ({
+        header: <Header  transparent back white iconColor={nowTheme.COLORS.WHITE} title="" navigation={navigation} />
+      })
+    }
+  },
+  {
+    cardStyle: { backgroundColor: '#FFFFFF' },
+    transitionConfig
+  }
+);
+
+const AddAppointmentStack = createStackNavigator(
+  {
+    AddAppointment: {
+      screen: AddAppointment,
+      navigationOptions: ({ navigation }) => ({
+        header: <Header  transparent back white iconColor={nowTheme.COLORS.WHITE} title="Add Appointment" navigation={navigation} />
+      })
+    }
+  },
+  {
+    cardStyle: { backgroundColor: '#FFFFFF' },
+    transitionConfig
+  }
+);
+
+const ServiceListStack = createStackNavigator(
+  {
+    Services: {
+      screen: ServiceList,
+      navigationOptions: ({ navigation }) => ({
+        header: <Header  transparent back white iconColor={nowTheme.COLORS.WHITE} title="Select Service(s)" navigation={navigation} />
       })
     }
   },
@@ -234,6 +282,24 @@ const AppStack = createDrawerNavigator(
     },
     AddVehicle: {
       screen: AddVehicleStack,
+      navigationOptions: {
+        drawerLabel: () => {}
+      }
+    },
+    AddAppointment: {
+      screen: AddAppointmentStack,
+      navigationOptions: {
+        drawerLabel: () => {}
+      }
+    },
+    Services: {
+      screen: ServiceListStack,
+      navigationOptions: {
+        drawerLabel: () => {}
+      }
+    },
+    BookOption: {
+      screen: BookOptionStack,
       navigationOptions: {
         drawerLabel: () => {}
       }

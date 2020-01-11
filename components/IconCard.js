@@ -1,7 +1,7 @@
 import React from 'react';
 import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
-import { StyleSheet, TouchableWithoutFeedback, Dimensions } from 'react-native';
+import { StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { Block, Text, theme } from 'galio-framework';
 
 import { nowTheme } from '../constants';
@@ -13,11 +13,13 @@ class IconCard extends React.Component {
     const {
       navigation,
       item,
+      isnavigate,
+      onItemClick,
     } = this.props;
 
     return (
       <Block style={styles.iconCard}>
-        <TouchableWithoutFeedback onPress={() => navigation.navigate(item.link)}>
+        <TouchableOpacity onPress={() => (isnavigate) ? navigation.navigate(item.link) : onItemClick}>
           <Block middle >
           <Icon
             family="NowExtra"
@@ -26,8 +28,6 @@ class IconCard extends React.Component {
             color={nowTheme.COLORS['ICON']}
         />
           </Block>
-        </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => navigation.navigate(item.link)}>
             <Block middle>
               <Text
                 style={{ fontFamily: 'montserrat-regular',  textAlign: 'center' }}
@@ -37,14 +37,16 @@ class IconCard extends React.Component {
                 {item.title}
               </Text>
           </Block>
-        </TouchableWithoutFeedback>
+        </TouchableOpacity>
       </Block>
     );
   }
 }
 
 IconCard.propTypes = {
-  item: PropTypes.object
+  item: PropTypes.object,
+  isnavigate: PropTypes.bool,
+  onItemClick: PropTypes.func
 };
 
 const styles = StyleSheet.create({

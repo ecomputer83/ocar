@@ -48,7 +48,7 @@ class Header extends React.Component {
         ];
       case 'MyAppointments':
         return [
-          <AddButton key="add-appointment" navigation={navigation} isWhite={white} />
+          <AddButton key="add-appointment" navigation={navigation} isWhite={white} link="BookOption"/>
         ];
 
       case 'Home':

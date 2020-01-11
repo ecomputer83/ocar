@@ -6,5 +6,6 @@ import utils from './utils';
 import Products from './products';
 import articles from './articles';
 import myvehicle from './myvehicle';
+import services from './services';
 
-export { iconmenu, nowTheme, Images, tabs, utils, Products, articles, myvehicle };
+export { iconmenu, nowTheme, Images, tabs, utils, Products, articles, myvehicle, services };

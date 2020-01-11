@@ -2,7 +2,7 @@ export default [
   {
     title: 'Book Appointment',
     icon: 'book',
-    link: 'MyAppointment'
+    link: 'BookOption'
   },
   {
     title: 'Vehicle Showroom',

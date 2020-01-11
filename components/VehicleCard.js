@@ -53,7 +53,7 @@ class VehicleCard extends React.Component {
                   color='transparent'
                   size='small'
                   style={{width: 80}}
-                  onPress={() => navigation.navigate('Home')}
+                  onPress={() => navigation.navigate('AddAppointment', item)}
                 >
                   <Text
                     style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}

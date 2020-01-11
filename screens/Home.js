@@ -11,20 +11,21 @@ class Home extends React.Component {
     return (
       <Block>
         <Block row style={{ paddingHorizontal: 20, paddingVertical: 20 }}>
-          <IconCard key="icon-card-1" item={iconmenu[0]} styles={styles.iconCard} />
-          <IconCard  key="icon-card-2" item={iconmenu[1]} styles={styles.iconCard} />
-          <IconCard  key="icon-card-3" item={iconmenu[2]} styles={styles.iconCard} />
+          <IconCard key="icon-card-1" item={iconmenu[0]} styles={styles.iconCard} isnavigate={true}/>
+          <IconCard  key="icon-card-2" item={iconmenu[1]} styles={styles.iconCard} isnavigate={true} />
+          <IconCard  key="icon-card-3" item={iconmenu[2]} styles={styles.iconCard} isnavigate={true} />
           
         </Block>
         <Block row style={{ paddingHorizontal: 20, paddingVertical: 20 }}>
-          <IconCard key="icon-card-4" item={iconmenu[3]} styles={styles.iconCard} />
-          <IconCard key="icon-card-5" item={iconmenu[4]} styles={styles.iconCard} />
-          <IconCard key="icon-card-6" item={iconmenu[5]} styles={styles.iconCard} />
+          <IconCard key="icon-card-4" item={iconmenu[3]} styles={styles.iconCard}  isnavigate={true}/>
+          <IconCard key="icon-card-5" item={iconmenu[4]} styles={styles.iconCard}  isnavigate={true}/>
+          <IconCard key="icon-card-6" item={iconmenu[5]} styles={styles.iconCard}  isnavigate={true}/>
           
         </Block>
       </Block>
     );
   };
+
 
   renderButtons = () => {
     const { navigation } = this.props;
