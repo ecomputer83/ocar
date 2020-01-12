@@ -3,7 +3,6 @@ import { StyleSheet,  Dimensions, TouchableOpacity, FlatList  } from 'react-nati
 import { Block, theme,Button as GaButton, Text } from "galio-framework";
 import { Input, Icon } from '../components';
 import { services, nowTheme } from '../constants';
-import { string, number } from 'prop-types';
 
 const { width } = Dimensions.get("screen");
 class ServiceList extends React.Component {
@@ -12,10 +11,10 @@ class ServiceList extends React.Component {
         super(props)
         
         this.state = {
-          vehicle : this.props.navigation.getParam('Vehicle', null),
-          jobType: this.props.navigation.getParam('jobType', null),
+          vehicle : (this.props.navigation.params != null) ? this.props.navigation.params.Vehicle : null,
+          jobType: (this.props.navigation.params != null) ? this.props.navigation.params.jobType : null,
           serviceList: [],
-          SelectedserviceList: []
+          SelectedserviceList: null
         }
 
         this.state.serviceList = services.map((item) => {
@@ -31,16 +30,10 @@ class ServiceList extends React.Component {
     press = (hey) => {
         this.state.serviceList.map((item) => {
           if (item.id === hey.id) {
-            item.check = !item.check
-            if (item.check === true) {
-              this.state.SelectedserviceList.push(item);
-            } else if (item.check === false) {
-              const i = this.state.SelectedserviceList.indexOf(item)
-              if (1 != -1) {
-                this.state.SelectedserviceList.splice(i, 1)
-                return this.state.SelectedserviceList
-              }
-            }
+            item.check = true
+            this.setState({SelectedserviceList: item})
+          }else {
+            item.check = false
           }
         })
         this.setState({serviceList: this.state.serviceList})
@@ -94,7 +87,7 @@ class ServiceList extends React.Component {
                                     shadowless
                                     style={styles.loginbutton}
                                     color={nowTheme.COLORS.PRIMARY}
-                                    onPress={() => navigation.navigate('Login')}
+                                    onPress={() => this.props.navigation.navigate('Schedule', { Vehicle: this.state.vehicle, jobType: this.state.jobType, serviceList: this.state.SelectedserviceList})}
                                 >
                                     <Text
                                         style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}

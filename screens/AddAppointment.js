@@ -22,8 +22,7 @@ class AddAppointment extends React.Component {
         myvehicle.map( (v,i)=>{
          if( index === i ){
            this.setState({
-           vehicle: myvehicle[index],
-           jobType: this.state.jobType
+           vehicle: myvehicle[index]
           })
          }
         })
