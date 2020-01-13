@@ -96,7 +96,7 @@ class Schedule extends React.Component {
               currentDate: new Date()
             });
             this.refreshDateList();
-        this.props.navigation.navigate('AppointmentConfirmation');
+        this.props.navigation.navigate('AppointmentConfirmation', {jobType: Params.jobType});
         });
     }
 

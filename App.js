@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image } from 'react-native';
 import { Block, GalioProvider } from 'galio-framework';
-
+import SplashScreen from 'react-native-splash-screen';
 import Screens from './navigation/Screens';
 import { Images, nowTheme, Products } from './constants';
 
@@ -26,9 +26,9 @@ export default class App extends React.Component {
     fontLoaded: false
   };
 
-  // async componentDidMount() {
-  //   _loadResourcesAsync();
-  // }
+  componentDidMount() {
+    SplashScreen.hide()
+  }
 
   render() {
   

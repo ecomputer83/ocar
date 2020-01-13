@@ -11,29 +11,28 @@ const { width, height } = Dimensions.get('screen');
 const thumbMeasure = (width - 48 - 32) / 3;
 
 export default class AppointmentConfirmation  extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      vehicle :  null,
-            jobType:  null,
-          Selectedservice:  null,
-      scheduledate:  null
-    }
+  state = {
+    vehicle :  null,
+          jobType:  null,
+        Selectedservice:  null,
+    scheduledate:  null
   }
 
   componentDidMount(){
     this.refreshData();
   }
+  componentDidUpdate(){
+    this.refreshData();
+  }
 
-  refreshData = () => {
-    AsyncStorage.getItem('Params', (err, result) => {
+  refreshData = async() => {
+    const result =await AsyncStorage.getItem('Params');
       var param = JSON.parse(result);
       if(param != null){
       this.setState({ vehicle: JSON.parse(param.vehicle), jobType: param.jobType, Selectedservice: JSON.parse(param.service), scheduledate: param.scheduledate });
       }
-    });
-        
-    
+      
+      return param.jobType == this.state.jobType;
   }
 
   done = () => {
@@ -44,7 +43,7 @@ export default class AppointmentConfirmation  extends React.Component {
     
   }
   render() {
-    this.refreshData();
+    let { vehicle, jobType, Selectedservice, scheduledate } = this.state;
   return (
     <Block style={{
       flex: 1,
@@ -53,23 +52,23 @@ export default class AppointmentConfirmation  extends React.Component {
       <Block />
       <Block flex={0.8} style={{ padding: theme.SIZES.BASE, marginTop: 20}}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          {(this.state.jobType != null) ? 
+          {(jobType != null) ? 
           (<Block flex style={{ marginTop: 5 }}>
-            <DetailCard Key="Job Type" Value={this.state.jobType} />
-            {(this.state.jobType == 'PMS' && this.state.Selectedservice != null) ? 
-            (<DetailCard Key="Service" Value={this.state.Selectedservice.title} />) : (<Block />) }
-            {(this.state.scheduledate != null) ? 
-            (<DetailCard Key="Schedule Date" Value={new Date(this.state.scheduledate).toLocaleDateString() + ' ' + new Date(this.state.scheduledate).toLocaleTimeString()} />) : (<Block />)}
+            <DetailCard Key="Job Type" Value={jobType} />
+            {(jobType == 'PMS' && Selectedservice != null) ? 
+            (<DetailCard Key="Service" Value={Selectedservice.title} />) : (<Block />) }
+            {(scheduledate != null) ? 
+            (<DetailCard Key="Schedule Date" Value={new Date(scheduledate).toLocaleDateString() + ' ' + new Date(scheduledate).toLocaleTimeString()} />) : (<Block />)}
           </Block>) : (<Block />)}
 
-          {(this.state.vehicle != null) ? 
+          {(vehicle != null) ? 
           (<Block flex style={{ marginTop: 15 }}>
-            <DetailCard Key="Vin (Chasis No)" Value={this.state.vehicle.vin} />
-            <DetailCard Key="Year" Value={this.state.vehicle.year} />
-            <DetailCard Key="Model" Value={this.state.vehicle.model} />
-            <DetailCard Key="Reg. Number" Value={this.state.vehicle.regNo} />
-            <DetailCard Key="Mileage" Value={this.state.vehicle.mileage} />
-            <DetailCard Key="Last Service Date" Value={this.state.vehicle.serviceduedate} />
+            <DetailCard Key="Vin (Chasis No)" Value={vehicle.vin} />
+            <DetailCard Key="Year" Value={vehicle.year} />
+            <DetailCard Key="Model" Value={vehicle.model} />
+            <DetailCard Key="Reg. Number" Value={vehicle.regNo} />
+            <DetailCard Key="Mileage" Value={vehicle.mileage} />
+            <DetailCard Key="Last Service Date" Value={vehicle.serviceduedate} />
           </Block>) : (<Block />)}
         </ScrollView>
       </Block>
