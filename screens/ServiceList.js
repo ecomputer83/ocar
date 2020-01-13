@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet,  Dimensions, TouchableOpacity, FlatList  } from 'react-native';
+import { StyleSheet,  Dimensions, TouchableOpacity, FlatList, AsyncStorage  } from 'react-native';
 import { Block, theme,Button as GaButton, Text } from "galio-framework";
 import { Input, Icon } from '../components';
 import { services, nowTheme } from '../constants';
@@ -11,8 +11,8 @@ class ServiceList extends React.Component {
         super(props)
         
         this.state = {
-          vehicle : (this.props.navigation.params != null) ? this.props.navigation.params.Vehicle : null,
-          jobType: (this.props.navigation.params != null) ? this.props.navigation.params.jobType : null,
+          vehicle : null,
+          jobType: null,
           serviceList: [],
           SelectedserviceList: null
         }
@@ -27,6 +27,18 @@ class ServiceList extends React.Component {
         })
     }
 
+    refreshData = () => {
+      let data = services.map((item) => {
+        return {
+            title: item.title,
+            id: item.id,
+            amount: item.amount,
+            check: false
+        }
+    })
+    this.setState({serviceList: data})
+    }
+
     press = (hey) => {
         this.state.serviceList.map((item) => {
           if (item.id === hey.id) {
@@ -37,10 +49,24 @@ class ServiceList extends React.Component {
           }
         })
         this.setState({serviceList: this.state.serviceList})
+        
       }
 
+    saveandnavigate = async () => {
+      let Params = JSON.parse(await AsyncStorage.getItem('Params'));
+      Params.service = JSON.stringify(this.state.SelectedserviceList);
+      await AsyncStorage.mergeItem('Params', JSON.stringify(Params), () => {
+        this.setState({
+          vehicle : null,
+          jobType: null,
+          SelectedserviceList: null
+        });
+        this.refreshData();
+      this.props.navigation.navigate('Schedule');
+      });
+  }
     render () {
-
+     
         return (
             <Block style={{ marginBottom: 5 }} >
                 <Block>
@@ -87,7 +113,7 @@ class ServiceList extends React.Component {
                                     shadowless
                                     style={styles.loginbutton}
                                     color={nowTheme.COLORS.PRIMARY}
-                                    onPress={() => this.props.navigation.navigate('Schedule', { Vehicle: this.state.vehicle, jobType: this.state.jobType, serviceList: this.state.SelectedserviceList})}
+                                    onPress={() => this.saveandnavigate()}
                                 >
                                     <Text
                                         style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}

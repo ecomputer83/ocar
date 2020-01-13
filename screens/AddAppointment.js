@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet,  Dimensions, Picker  } from 'react-native';
+import { StyleSheet,  Dimensions, Picker, AsyncStorage  } from 'react-native';
 import { Block, theme,Button as GaButton, Text } from "galio-framework";
 import { Input, Icon } from '../components';
 import { myvehicle, nowTheme } from '../constants';
@@ -13,11 +13,20 @@ class AddAppointment extends React.Component {
 
     constructor(props) {
         super(props);
+        
         state = {
-            vehicle : this.props.navigation.state.params,
+            vehicle : null,
             jobType: null
         }
       }
+    componentDidMount(){
+        AsyncStorage.getItem('selectedvehicle', (err, result) => {
+            this.setState({vehicle: JSON.parse(result)})
+        })
+    }
+    componentWillUnmount(){
+        this.setState({vehicle: null, jobType: null});
+    }
     pickerChange(index){
         myvehicle.map( (v,i)=>{
          if( index === i ){
@@ -74,7 +83,21 @@ class AddAppointment extends React.Component {
                               </Block>
         )
     }
+    saveandnavigate = () => {
+        AsyncStorage.setItem('Params', JSON.stringify({ vehicle: null, jobType: null, service: null, scheduledate: null}), () => {
+        AsyncStorage.mergeItem('Params', JSON.stringify({ vehicle: JSON.stringify(this.state.vehicle), jobType: this.state.jobType, service: null, scheduledate: null}), () => {
+            
+            if(this.state.jobType == 'PMS') {
+            this.props.navigation.navigate('Services')
+        }else{
+            this.props.navigation.navigate('Schedule') 
+        };
+        this.setState({vehicle: null, jobType: null});
+    });
+})
+    }
     render () {
+        const {vehicle, jobType} = this.state
         return (
             <Block flex center>
                 <Block flex={1} space="between">
@@ -85,7 +108,7 @@ class AddAppointment extends React.Component {
                                 <Text>My Vehicles</Text>
                                 <Block  style={styles.picker}>
                                 <Picker
-                                    selectedValue={this.state.vehicle }
+                                    selectedValue={vehicle }
                                     onValueChange={(itemValue, itemIndex) => this.pickerChange(itemIndex)}>
                                         <Picker.Item label='-- Select Vehicle --' value={null} />
                                         {
@@ -96,17 +119,17 @@ class AddAppointment extends React.Component {
                                 </Picker>
                                 </Block>
                               </Block>
-                              { (this.state.vehicle != null) ?  this.renderJobType() : (<Block />)}
-                             { (this.state.vehicle != null) ? (this.state.jobType == 'PMS') ? this.renderServiceDate() : (<Block />): (<Block />)}
-                             { (this.state.vehicle != null) ? (this.state.jobType != null) ? this.renderMileage() : (<Block />): (<Block />)} 
+                              { (vehicle != null) ?  this.renderJobType() : (<Block />)}
+                             { (vehicle != null) ? (jobType == 'PMS') ? this.renderServiceDate() : (<Block />): (<Block />)}
+                             { (vehicle != null) ? (jobType != null) ? this.renderMileage() : (<Block />): (<Block />)} 
                               <Block style={{marginBottom:  10}}></Block>
-                              { (this.state.vehicle != null) ?  (
+                              { (vehicle != null) ?  (
                               <Block width={width * 0.8} center>
                                 <GaButton
                                     shadowless
                                     style={styles.loginbutton}
                                     color={nowTheme.COLORS.PRIMARY}
-                                    onPress={() => this.props.navigation.navigate('Services', { Vehicle: this.state.vehicle, jobType: this.state.jobType})}
+                                    onPress={() => this.saveandnavigate()}
                                 >
                                     <Text
                                         style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}

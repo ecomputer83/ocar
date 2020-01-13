@@ -17,7 +17,7 @@ export default class DetailCard extends React.Component {
             const BlackColor = nowTheme.COLORS.BLACK;
           return ( 
               <Block row flex style={{width:width}}>
-            <Block style={{width:width * 0.4}}>
+            <Block style={{width:(width - 10) * 0.4}}>
             <Text
                 style={{
                   color: PrimaryColor,
@@ -32,7 +32,7 @@ export default class DetailCard extends React.Component {
                 {Key}
                   </Text>
             </Block>
-            <Block style={{width: width * 0.6}}>
+            <Block style={{width: (width - 50) * 0.6}}>
             <Text
                 style={{
                   color: BlackColor,

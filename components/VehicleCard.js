@@ -1,13 +1,19 @@
 import React from 'react';
 import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
-import { StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Dimensions, TouchableOpacity, AsyncStorage } from 'react-native';
 import { Block, Text, theme, Button } from 'galio-framework';
 import { Icon } from '../components';
 import { nowTheme } from '../constants';
 
 const {width, height } = Dimensions.get('screen');
 class VehicleCard extends React.Component {
+
+  navigatetoAppointment = (item) => {
+    AsyncStorage.setItem('selectedvehicle', JSON.stringify(item), () => {
+      navigation.navigate('AddAppointment')
+    })
+  }
   render() {
     const {
       navigation,
@@ -53,7 +59,7 @@ class VehicleCard extends React.Component {
                   color='transparent'
                   size='small'
                   style={{width: 80}}
-                  onPress={() => navigation.navigate('AddAppointment', item)}
+                  onPress={() => this.navigatetoAppointment(item) }
                 >
                   <Text
                     style={{ fontFamily: 'montserrat-bold', fontSize: 14 }}
